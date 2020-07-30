@@ -1,0 +1,74 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Add Currency</h2>
+    
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+     <!-- <div class="form-group">
+        <label for="currency_name">Currency Name:</label>
+        <p-dropdown  
+        [style]="{'width': '100%'}" [options]="currencies" placeholder="Select the currency" formControlName="currency"></p-dropdown>
+      </div>-->
+  
+      <div class="form-group">
+        <label for="currency_code">Currency Code:</label>
+        <p-dropdown  
+            [style]="{'width': '100%'}" [options]="currencies"  placeholder="Select the currency" formControlName="code"></p-dropdown>
+      </div>
+
+      <button  pButton type="submit" label="Submit"  class="ui-button-raised ui-button-success"></button>
+
+     </form>
+      </div>
+
+<br>
+<br>
+
+<p-table  [value]="currency" dataKey="id" editMode="row">
+      
+        
+  <ng-template pTemplate="header">
+      <tr>
+       <!----<th>Currency ID</th>
+        <th>ID</th>-->
+        <!--<th>Currency Name</th>-->
+        <th>Currency Code</th>
+        <th>Actions</th>
+  
+      
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="rowData">
+         <!----<td>
+              {{rowData.id}}
+          </td>-->
+    <!-- <td>
+              <p-cellEditor>
+                  <ng-template pTemplate="input">
+                      <p-dropdown [options]="currencies" [(ngModel)]="rowData.currency" [style]="{'width':'100%'}"></p-dropdown>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                      {{rowData.currency}}
+                  </ng-template>
+              </p-cellEditor>
+          </td>-->
+          
+          <td>
+            <p-cellEditor>
+                <ng-template pTemplate="input">
+                    <p-dropdown [options]="codes" [(ngModel)]="rowData.code" [style]="{'width':'100%'}"></p-dropdown>
+                </ng-template>
+                <ng-template pTemplate="output">
+                    {{rowData.code}}
+                </ng-template>
+            </p-cellEditor>
+        </td>
+
+         <td style="text-align:center">
+           <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData.id,rowData)">Update</button>
+          <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData.id)">Delete</button>
+          </td>
+      </tr>
+  </ng-template>
+  </p-table>
+  

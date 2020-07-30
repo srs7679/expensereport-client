@@ -1,0 +1,67 @@
+<div class="panel panel-primary">
+  <h1 align="center">Manage Expenses</h1>
+  <div class="ui-helper-clearfix">
+    
+    <button pButton type="button" (click)="expenseAdd()" title="Add Expense"  data-toggle="tooltip"  icon="pi pi-user-plus"></button>
+  </div>
+    
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Category Name</th>
+          <th>Price</th>
+           <th>Quantity</th>
+           <th>Tax</th>
+           <th>Amount</th>
+           <th>Total</th>
+           <th>Purchase_date</th>
+           <th>Created_by</th>
+           <th>Updated_by</th>
+            <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees | async">
+          <td>{{employee.id}}</td>
+          <td>{{employee.name}}</td>
+          <td>{{employee.price}}</td>
+          <td>{{employee.quantity}}</td>
+          <td>{{employee.tax}}</td>
+          <td>{{employee.amount}}</td>
+          <td>{{employee.total}}</td>
+          <td>{{employee.purchase_date}}</td>
+          <td>{{employee.created_by}}</td>
+          <td>{{employee.updated_by}}</td>
+         
+          <td><button pButton type="button" data-toggle="tooltip" title="Update Expense" (click)="updateEmployee(employee.id)" class="ui-button-raised" icon="pi pi-pencil" ></button></td>
+             <td><button  pButton type="button"  data-toggle="tooltip" title="Delete Expense" (click)="confirm2(employee.id,employee.name)" class="ui-button-danger" icon="pi pi-times"></button></td> 
+             <td><button pButton type="button" data-toggle="tooltip" title="Expense Details" (click)="employeeDetails(employee.id)" class="ui-button-raised" icon="pi pi-eye"></button></td> 
+             <td><button pButton type="button"  data-toggle="tooltip" title="Add Currency" (click)="addcurrency(employee.id)" class="ui-button-info" icon="pi pi-user-plus"></button></td> 
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>  
+      
+<p-messages [value]="msgs"></p-messages>
+
+
+
+
+
+
+
+
+
+
+
+

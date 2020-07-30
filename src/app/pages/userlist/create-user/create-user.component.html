@@ -1,0 +1,108 @@
+
+
+<form  [formGroup]="userForm"  (ngSubmit)="onSubmit()">
+    <div class="ui-fluid">
+      
+      <div class="p-field p-grid">
+        <label for="name" class="p-col-12 p-md-2" >First Name</label>
+        <div class="p-col-12 p-md-10">
+            <input type="text" pInputText   formControlName="firstname">
+            <div *ngIf="userForm.controls['firstname'].hasError('required') && userForm.controls['firstname'].touched" class=" text-danger">
+              Please enter the Firstname
+            </div>
+            <div *ngIf="userForm.controls['firstname'].hasError('whitespace') && userForm.controls['firstname'].touched" class="text-danger">
+              Please enter the valid  Firstname
+            </div>
+            <div *ngIf="userForm.controls['firstname'].hasError('minlength')" class="text-danger">
+              The Firstname should atleast has three characters..
+            </div>
+        </div> 
+      </div>
+
+      <div class="p-field p-grid">
+        <label for="name" class="p-col-12 p-md-2" >Last Name</label>
+        <div class="p-col-12 p-md-10">
+            <input type="text"  pInputText formControlName="lastname" >
+            <div *ngIf="userForm.controls['lastname'].hasError('required')&& userForm.controls['lastname'].touched" class="text-danger">
+              Please enter the Lastname
+            </div>
+            <div *ngIf="userForm.controls['lastname'].hasError('whitespace') && userForm.controls['lastname'].touched" class="text-danger">
+              Please enter the valid  Lastname
+            </div>
+            <div *ngIf="userForm.controls['lastname'].hasError('minlength')" class="text-danger">
+              The lastname should atleast has three characters..
+            </div>
+        </div> 
+      </div>
+
+      <div class="p-field p-grid">
+        <label for="name" class="p-col-12 p-md-2" >Email ID</label>
+        <div class="p-col-12 p-md-10">
+            <input type="text" pInputText  formControlName="email">
+            <div *ngIf="userForm.controls['email'].hasError('required') && userForm.controls['email'].touched" class="text-danger">
+              Please enter the email
+            </div>
+            <div *ngIf="userForm.controls['email'].hasError('email')" class="text-danger">
+           Invalid email format
+            </div>
+        </div>
+      </div>
+      <div class="p-field p-grid">
+          <label for="name"  class="p-col-12 p-md-2">Mobile No</label>
+          <div class="p-col-12 p-md-10"> 
+              <input type="text" pInputText formControlName="mobile">
+              <div *ngIf="userForm.controls['mobile'].hasError('required') && userForm.controls['mobile'].touched" class="text-danger">
+                Please enter the mobile no
+              </div>
+              <div *ngIf="userForm.controls['mobile'].hasError('pattern')" class="text-danger">
+                Please enter the mobile no with 10 digits
+              </div>
+              
+          </div> 
+      </div>
+      
+      <div class="p-field p-grid">
+        <label for="name"  class="p-col-12 p-md-2">Status</label>
+        <div class="p-col-12 p-md-2"> 
+           <p-dropdown  [autoWidth]="true"
+           [style]="{'width': '15%'}" [options]="statuses" placeholder="Select the status" formControlName="status"  ></p-dropdown>
+           <div *ngIf="userForm.controls['status'].hasError('required') && userForm.controls['status'].touched" class="text-danger">
+            Please select the status
+          </div>
+        </div> 
+      </div>
+      <div formArrayName="usertype">
+        <div class="p-field p-grid"  *ngFor="let group of usertypeArray.controls; let i = index;" [formGroupName]="i">
+        <label for="name"  class="p-col-12 p-md-2">UserType</label>
+        <div class="p-col-12 p-md-2"  > 
+           <p-dropdown  [autoWidth]="true"
+           [style]="{'width': '15%'}" [options]="usertypes" placeholder="Select the usertype" formControlName="name"  ></p-dropdown>
+          <div *ngIf= "group.controls.name.invalid && group.controls.name.touched" class="text-danger">
+            Please select the usertype
+          </div>
+        </div> 
+      </div>
+      </div>
+
+
+
+
+
+    </div>
+    
+      <div class="p-formgroup-inline">
+        <div class="p-field">
+         
+          <button [disabled]="userForm.invalid"  pButton type="submit" label="Add"  class="ui-button-raised ui-button-success"></button>
+        </div>
+        <!--<div class="p-field">
+          <button pButton type="button" label="Cancel" (click)="gotoList() "  class="ui-button-raised"></button>
+        </div>-->
+      </div>
+  </form>
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 10%;
+}
+.number{
+display:flex;
+justify-content: center;
+align-items: center;
+border: 2px solid maroon;
+box-sizing: border-box;
+height:100px;
+}
+.container{
+height: 400px;
+}

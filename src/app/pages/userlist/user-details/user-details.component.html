@@ -1,0 +1,28 @@
+
+
+
+<div *ngIf="user">
+  <div>
+    <label><b>First Name: </b></label> {{user.firstname}}
+  </div>
+  <div>
+    <label><b>Last Name: </b></label> {{user.lastname}}
+  </div>
+  <div>
+    <label><b>Email Id: </b></label> {{user.email}}
+  </div>
+  <div>
+    <label><b>Mobile no: </b></label> {{user.mobile}}
+  </div>  
+  
+  <div>
+    <label><b>Status:</b></label> {{user.status}}
+  </div> 
+  <div>
+    <label><b>UserType:</b></label>
+    <span *ngFor="let obj of user.usertype">
+      {{obj.name}}
+    </span>
+    </div>
+</div>
+

@@ -1,0 +1,132 @@
+<h1 mat-dialog-title align="center">
+  {{ action }} User Form
+</h1>
+<div mat-dialog-content>
+
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <table>
+      <tr>
+        <td>
+          <ng-container matColumnDef="local_data.firstName">
+            <label for="name">First Name</label>
+            <input type="text" name="user" class="form-control" placeholder="First Name" [(ngModel)]="local_data.firstName" required><br>
+            <!--<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+              <span ng-show="myForm.user.$error.required">First Name is required.</span>
+              </span>-->
+          </ng-container>
+        </td>
+        <td>
+          <ng-container matColumnDef="local_data.lastName">
+            <label for="name"> Last Name </label>
+            <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="local_data.lastName"><br>
+
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ng-container matColumnDef="local_data.displayName">
+            <label for="name">Display Name </label>
+            <input id="displayName" type="text" class="form-control" placeholder="Display Name" [(ngModel)]="local_data.displayName"><br>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container matColumnDef="local_data.emailId">
+            <label for="name"> Email Id </label>
+            <input id="email" name="email" type="text" class="form-control" placeholder="Email Id" [(ngModel)]="local_data.emailId"><br>
+         <!--   <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+              <span ng-show="myForm.email.$error.required">Email is required.</span>
+              <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+              </span>-->
+            
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ng-container matColumnDef="local_data.address1">
+            <label for="name">Address1 </label>
+            <input type="text" class="form-control" placeholder="address1" [(ngModel)]="local_data.address1"><br>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container matColumnDef="local_data.address2">
+            <label for="name"> Address2 </label>
+            <input type="text" class="form-control" placeholder="address2" [(ngModel)]="local_data.address2"><br>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ng-container matColumnDef="local_data.mobile">
+            <label for="name">Mobile </label>
+            <input type="text" class="form-control" placeholder="mobile" [(ngModel)]="local_data.mobile" required
+              name="mobilenumber" pattern="[0-9]*" minlength="10" maxlength="10"><br>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container matColumnDef="local_data.state">
+            <label for="name"> State </label>
+            <input type="text" class="form-control" placeholder="state" [(ngModel)]="local_data.state"><br>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ng-container matColumnDef="local_data.city">
+            <label for="name">City </label>
+            <input type="text" class="form-control" placeholder="city" [(ngModel)]="local_data.city"><br>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container matColumnDef="local_data.pincode">
+            <label for="name"> PinCode </label>
+            <input type="text" class="form-control" placeholder="pincode" [(ngModel)]="local_data.pincode"><br>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ng-container matColumnDef="role">
+            <label for="name">Role Name</label>
+            <select class="form-control" [(ngModel)]="local_data.role">
+              <option value="Customer">Customer</option>
+              <option value="Partner">Partner</option>
+              <option value="Farmer">Farmer</option>
+              <option value="Vendor" selected>Vendor</option>
+            </select>
+          </ng-container>
+
+        </td>
+        <td>
+          <ng-container matColumnDef="status">
+            <label for="name">Status</label>
+            <select class="form-control" [(ngModel)]="local_data.status">
+              <option value="Active" selected> Active</option>
+              <option value="In Active">In Active</option>
+            </select>
+          </ng-container>
+        </td>
+      </tr>
+    </table>
+  </mat-form-field>
+</div>
+
+<table>
+  <tr>
+    <td>
+      <ng-template #elseTemplate>
+        Sure to delete <b>{{ local_data.firstName }}</b>?
+      </ng-template>
+    </td>
+
+    <td>
+      <div mat-dialog-actions>
+        <button mat-button (click)="doAction()">{{ action }}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+          Cancel
+        </button>
+      </div>
+    </td>
+  </tr>
+</table>

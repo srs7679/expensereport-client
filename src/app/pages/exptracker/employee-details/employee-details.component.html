@@ -1,0 +1,38 @@
+<h2>Expense Details</h2> 
+
+<hr/>
+<div *ngIf="employee">
+  <div>
+    <label><b>Category Name: </b></label> {{employee.name}}
+  </div>
+ <div>
+    <label><b>Price: </b></label> {{employee.price}}
+  </div>
+  <div>
+    <label><b>Quantity: </b></label> {{employee.quantity}}
+  </div>  
+  <div>
+    <label><b>Tax: </b></label> {{employee.tax}}
+  </div>
+  <div>
+    <label><b>Amount: </b></label> {{employee.amount}}
+  </div>
+  <div>
+    <label><b>Total: </b></label> {{employee.total}}
+  </div>
+  <div>
+    <label><b>Purchase_date: </b></label> {{employee.purchase_date}}
+  </div>
+  <div>
+    <label><b>Created_by: </b></label> {{employee.created_by}}
+  </div>
+  <div>
+    <label><b>Updated_by: </b></label> {{employee.updated_by}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Expense List</button><br>
+
+

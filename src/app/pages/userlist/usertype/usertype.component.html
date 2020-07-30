@@ -1,0 +1,56 @@
+<h1>UserType </h1>
+<br>
+     
+     
+      <p-table  [columns]="cols" #dt [value]="expenses" exportFilename="UserType" sortMode="multiple" [scrollable]="true" scrollHeight="200px" >
+        <ng-template pTemplate="header" let-columns >
+          <tr>
+            <th *ngFor="let col of columns" [style]="{'width': '150px'}"  [pSortableColumn]="col.field.subfield"[pSortableColumn]="col.field">
+              {{[col.header]}}
+              <p-sortIcon  [field]="col.field.subfield" [field]="col.field"></p-sortIcon>
+            </th>
+
+        </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-expense>
+          <tr>
+            <td>{{expense.user.id}}</td>
+            <td>{{expense.name}}</td>
+            <td>{{expense.user.firstname}}</td>
+            <td>{{expense.user.lastname}}</td>
+            <td>{{expense.user.email}}</td>
+            <td>{{expense.user.mobile}}</td>
+            <td>{{expense.user.status}}</td>
+          </tr>
+
+        </ng-template>
+  
+        
+          
+</p-table>
+<div>
+  <button type="button" pButton icon="pi pi-file-excel" title="Download .csv File"  data-toggle="tooltip"iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
+</div>
+
+
+
+
+        <!-- 
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+               <div *ngIf="col.subfield;then nested_object_content else normal_content"></div>
+               <ng-template #nested_object_content>
+                 {{rowData[col.field][col.subfield]}}
+               </ng-template>
+               <ng-template #normal_content>
+                 {{rowData[col.field]}}
+               </ng-template>
+            </td>
+          </tr>
+        </ng-template>-->
+
+
+
+        <!--<button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="exportCSV(filename,expenses)"
+        style="margin-right: 0.5em;"></button>-->

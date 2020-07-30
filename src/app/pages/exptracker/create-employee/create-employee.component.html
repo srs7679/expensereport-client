@@ -1,0 +1,145 @@
+<h1 align="center"> Create Expense</h1>
+<form  [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="ui-fluid">
+    
+    <div class="p-field p-grid">
+      <label for="name" class="p-col-12 p-md-2" >Name</label>
+      <div class="p-col-12 p-md-10">
+          <input type="text" pInputText   formControlName="name" >
+          <div *ngIf="userForm.controls['name'].hasError('required') && userForm.controls['name'].touched" class=" text-danger">
+            Please enter the name
+          </div>
+          <div *ngIf="userForm.controls['name'].hasError('whitespace') && userForm.controls['name'].touched" class="text-danger">
+            Please enter the valid name...
+          </div>
+      </div> 
+    </div>
+
+  </div>
+
+  
+    <div class="p-field p-grid">
+      <label for="name" class="p-col-12 p-md-2" >Price</label>
+      <div class="p-col-12 p-md-10">
+          <input type="text"   pInputText formControlName="price" [(ngModel)]="price1">
+          <div *ngIf="userForm.controls['price'].hasError('required')&& userForm.controls['price'].touched" class="text-danger">
+            Please enter the price
+          </div>
+          <div *ngIf="userForm.controls['price'].hasError('pattern')" class="text-danger">
+            Please enter the  valid price
+          </div>
+      </div> 
+    </div>
+
+    <div class="p-field p-grid">
+      <label for="name" class="p-col-12 p-md-2" >Quantity</label>
+      <div class="p-col-12 p-md-10">
+          <input type="text" pInputText    formControlName="quantity" [(ngModel)]="quantity1" onmousedown="calculate()">
+          <div *ngIf="userForm.controls['quantity'].hasError('required') && userForm.controls['quantity'].touched" class="text-danger">
+            Please enter the quantity
+          </div>
+          <div *ngIf="userForm.controls['quantity'].hasError('pattern')" class="text-danger">
+            Please enter the  valid quantity
+          </div>
+      </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="name"  class="p-col-12 p-md-2">Tax</label>
+        <div class="p-col-12 p-md-10"> 
+            <input type="text" (scroll)="calculate()" pInputText formControlName="tax" [(ngModel)]="tax1" required readonly>
+            <div *ngIf="userForm.controls['tax'].hasError('required') && userForm.controls['tax'].touched" class="text-danger">
+               the tax is auto generated
+            </div>
+            <div *ngIf="userForm.controls['tax'].hasError('pattern')" class="text-danger">
+              the tax is auto generated
+            </div>
+            
+        </div> 
+    </div>
+    <div class="p-field p-grid">
+      <label for="name"  class="p-col-12 p-md-2" >Amount</label>
+      <div class="p-col-12 p-md-10"> 
+          <input type="text" (scroll)="calculate()" pInputText formControlName="amount" [(ngModel)]="amount1" required readonly>
+          <div *ngIf="userForm.controls['amount'].hasError('required') && userForm.controls['amount'].touched" class="text-danger">
+            the  amount is auto generated
+          </div>
+          <div *ngIf="userForm.controls['amount'].hasError('pattern')" class="text-danger">
+            the amount is auto generated
+          </div>
+          
+      </div> 
+  </div>
+
+  <div class="p-field p-grid">
+    <label for="name"  class="p-col-12 p-md-2" >Total</label>
+    <div class="p-col-12 p-md-10"> 
+        <input type="text" (scroll)="calculate()"  pInputText formControlName="total" [(ngModel)]="total1" required readonly>
+        <div *ngIf="userForm.controls['total'].hasError('required') && userForm.controls['total'].touched" class="text-danger">
+          the total is auto generated
+        </div>
+        <div *ngIf="userForm.controls['total'].hasError('pattern')" class="text-danger">
+          the total  is auto generated
+        </div>
+        
+    </div> 
+</div>
+
+<div class="p-field p-grid">
+  <label for="name"  class="p-col-12 p-md-2">Purchase_date</label>
+  <div class="p-col-12 p-md-10"> 
+      <input  type="date" (mouseenter)="calculate()"  placeholder="yyyy-mm-dd"  pInputText formControlName="purchase_date">
+      <div *ngIf="userForm.controls['purchase_date'].hasError('required') && userForm.controls['purchase_date'].touched" class="text-danger">
+        Please enter the purchase_date
+      </div>
+      
+      
+  </div> 
+</div>
+
+<div class="p-field p-grid">
+<label for="name"  class="p-col-12 p-md-2">Created_by</label>
+<div class="p-col-12 p-md-10"> 
+    <input type="text"  pInputText formControlName="created_by">
+    <div *ngIf="userForm.controls['created_by'].hasError('required') && userForm.controls['created_by'].touched" class="text-danger">
+      Please enter the created_by
+    </div>
+    <div *ngIf="userForm.controls['created_by'].hasError('whitespace') && userForm.controls['created_by'].touched" class="text-danger">
+      Please enter the  valid created_by
+    </div>
+    
+</div> 
+</div>
+
+<div class="p-field p-grid">
+<label for="name"  class="p-col-12 p-md-2">Updated_by</label>
+<div class="p-col-12 p-md-10"> 
+    <input type="text" pInputText formControlName="updated_by">
+    <div *ngIf="userForm.controls['updated_by'].hasError('required') && userForm.controls['updated_by'].touched" class="text-danger">
+      Please enter the updated_by
+    </div>
+    <div *ngIf="userForm.controls['updated_by'].hasError('pattern')" class="text-danger">
+      Please enter the updated_by
+    </div>
+    
+</div> 
+</div>
+
+
+
+  <div class="p-formgroup-inline">
+      <div class="p-field">
+        <button   pButton type="submit" [disabled]="userForm.invalid" label="Add"  class=" ui-button-success"></button>
+      
+      </div>
+      
+      
+    </div>
+</form>
+
+
+
+
+
+
+
+
